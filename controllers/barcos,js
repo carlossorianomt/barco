@@ -1,0 +1,46 @@
+var validator = require("validator");
+
+var controller = {
+   
+
+    save: function(req, res){
+        var params = req.body;
+        console.log(params);
+        var validate_name = !validator.isEmpty(params.nombre);
+        var validate_target = !validator.isEmpty(params.objetivo);
+        var validate_capacity = !validator.isEmpty(params.capacidad);
+        var validate_category_id = !validator.isEmpty(params.categoria_id);
+        console.log(validate_pass);
+        if(validate_name && validate_target && validate_capacity && validate_category_id){
+            return res.status(200).send({
+                message:"Barco guardado"
+            })
+        }else{
+            return res.status(200).send({
+                message:"Ingresa todos los datos, y asegurate que los datos sean valido",
+                params
+            })
+        }
+        
+    },
+
+    update:function(req,res){
+        return res.status(200).send({
+            message:"Actualizar"
+        })
+    },
+
+    delete:function(req,res){
+        return res.status(200).send({
+            message:"Eliminar"
+        })
+    },
+
+    listarUsuarios:function(req,res){
+        return res.status(200).send({
+            message:"Listado de Usuarios"
+        })
+    }
+}
+
+module.exports = controller;
